@@ -1,5 +1,7 @@
 <h2>Second Component</h2>
 
+<button (click)="getUsers()">Get Users</button> <br/><br/>
+
 <table border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>
@@ -9,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users$ | async">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>

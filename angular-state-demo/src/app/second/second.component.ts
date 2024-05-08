@@ -1,32 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UtilityService } from '../shared/utility.service';
 import { UserState } from '../store/state/user.state';
 import { GetUser } from '../store/actions/user.action';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
+import { Observable, Subscription } from 'rxjs';
+import { User } from '../shared/user.model';
 
 @Component({
   selector: 'app-second',
   templateUrl: './second.component.html',
   styleUrls: ['./second.component.css']
 })
-export class SecondComponent {
+export class SecondComponent implements OnInit, OnDestroy {
 
-  users: any;
+  @Select(UserState.getUserList)
+  users$!: Observable<User[]>;
 
-  constructor(private _utilityService: UtilityService,
-    private store: Store) { }
+  @Select(UserState.usersLoaded)
+  userLoaded$!: Observable<boolean>;
+
+  // @Select(UserState.usersLoaded)
+  usersLoadedSub!: Subscription;
+
+  constructor(private store: Store) { }
 
   ngOnInit() : void {
     this.getUsers();
   }
 
   getUsers() {
-      this.store.dispatch(new GetUser());
-    // this._utilityService.fetchUsers().subscribe(result => {
-      //   this.users = result;
-      // }, (error) => {
-      //   console.log(error);
-      // });
+      this.usersLoadedSub = 
+      this.userLoaded$.subscribe(loadedUsers => {
+        if(!loadedUsers) {
+          this.store.dispatch(new GetUser());
+          // this.users$.subscribe();
+        }
+      });
+    }
+
+    ngOnDestroy(): void {
+     this.usersLoadedSub.unsubscribe();
     }
 
 }

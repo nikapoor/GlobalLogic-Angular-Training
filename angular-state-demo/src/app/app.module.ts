@@ -11,13 +11,15 @@ import { FirstComponent } from './first/first.component';
 import { HomeComponent } from './home/home.component';
 import { SecondComponent } from './second/second.component';
 import { UserState } from './store/state/user.state';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponent,
     HomeComponent,
-    SecondComponent
+    SecondComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

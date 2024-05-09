@@ -11,6 +11,10 @@ export class UtilityService {
   constructor(private _http: HttpClient) { }
 
   fetchUsers() {
-    return this._http.get(`https://jsonplaceholder.typicode.com/users`);
+    return this._http.get(`http://localhost:3000/users`);
+  }
+
+  fetchUserById(id: string) {
+    return this._http.get(`http://localhost:3000/users/${id}`)
   }
 }

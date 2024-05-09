@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { User } from "src/app/shared/user.model";
-import { GetUser } from "../actions/user.action";
+import { GetUser, SetSelectedUser } from "../actions/user.action";
 import { UtilityService } from "src/app/shared/utility.service";
 import { tap } from "rxjs";
 
@@ -9,6 +9,7 @@ import { tap } from "rxjs";
 export class UserClassModel {
     users!: User[];
     usersLoaded!: boolean;
+    selectedUser!: User;
 }
 
 // State Decorator
@@ -16,7 +17,8 @@ export class UserClassModel {
    name: 'users',
    defaults: {
     users: [],
-    usersLoaded: false
+    usersLoaded: false,
+    selectedUser: null
    }
   })
 
@@ -38,6 +40,11 @@ export class UserState {
         return state.usersLoaded;
     }
 
+    @Selector()
+    static selectedUser(state: UserClassModel) {
+        return state.selectedUser;
+    }
+
     @Action(GetUser)
     getUsers({getState, setState}: StateContext<UserClassModel>) {
         // console.log('State Action!!')
@@ -53,6 +60,11 @@ export class UserState {
             // state = getState();
             // console.log('New State: ', state);
         }));
+    }
+
+    @Action(SetSelectedUser)
+    SetSelectedUser({getState, setState}: StateContext<UserClassModel>, {id}: SetSelectedUser) {
+        console.log('SetSelectedUser - State Action!!')
     }
 
 }

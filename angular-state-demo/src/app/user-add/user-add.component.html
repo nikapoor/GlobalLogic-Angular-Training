@@ -1,0 +1,20 @@
+<form [formGroup]="userForm" (ngSubmit)="onUserSubmit()"> 
+        <div>
+            <label>Enter Id: </label>
+            <input type="text" formControlName="id">
+            <small *ngIf="!userForm.get('id')!.valid && userForm.get('id')!.touched">Please Enter Id.</small>
+        </div>
+        <div>
+            <label>Enter Name: </label>
+            <input type="text" formControlName="name">
+            <small *ngIf="!userForm.get('name')!.valid && userForm.get('name')!.touched">Please Enter Name.</small>
+        </div>
+        <br/>
+        <div>
+            <label>Enter Email: </label>
+            <input type="text" formControlName="email">
+            <small *ngIf="!userForm.get('email')!.valid && userForm.get('email')!.touched">Please Enter Email.</small>
+        </div>
+        <br/>
+            <button type="submit">Submit</button>
+</form>

@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UtilityService } from '../shared/utility.service';
 import { User } from '../shared/user.model';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { SetSelectedUser } from '../store/actions/user.action';
+import { UserState } from '../store/state/user.state';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-detail',
@@ -13,6 +15,11 @@ import { SetSelectedUser } from '../store/actions/user.action';
 export class UserDetailComponent {
 
   user: User = new User();
+
+  @Select(UserState.selectedUser)
+  selectedUser$!: Observable<User>;
+
+  selectedUserSub!: Subscription;
 
   constructor(private _route: ActivatedRoute,
     private _utilityService:UtilityService,
@@ -25,9 +32,13 @@ export class UserDetailComponent {
 
   getUserById(id:any) {
     this.store.dispatch(new SetSelectedUser(id));
-    this._utilityService.fetchUserById(id).subscribe((result:any) => {
+    this.selectedUserSub = this.selectedUser$.subscribe(result => {
       this.user = result;
-    })
+    });
+  }
+
+  ngOnDestroy() {
+    this.selectedUserSub.unsubscribe();
   }
 
 }

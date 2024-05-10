@@ -63,8 +63,24 @@ export class UserState {
     }
 
     @Action(SetSelectedUser)
-    SetSelectedUser({getState, setState}: StateContext<UserClassModel>, {id}: SetSelectedUser) {
-        console.log('SetSelectedUser - State Action!!')
-    }
+    SetSelectedUser({getState, setState}: StateContext<UserClassModel>, {id}: SetSelectedUser)  {
+        const state = getState();
+        const user = state.users && state.users.find(user => user.id  === id)
+        if(user) {
+            setState({
+                ...state,
+                selectedUser: user
+            })
+            return user;
+        } else {
+            return this._utilityService.fetchUserById(id).pipe(tap((result: any)=> {
+                var state = getState()
+                setState({
+                    ...state,
+                    selectedUser: result
+                })
+            }));
+        }
+     }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { User } from "src/app/shared/user.model";
-import { AddUser, DeleteUser, GetUser, SetSelectedUser } from "../actions/user.action";
+import { AddUser, DeleteUser, GetUser, SetSelectedUser, UpdateUser } from "../actions/user.action";
 import { UtilityService } from "src/app/shared/utility.service";
 import { tap } from "rxjs";
 import { Router } from "@angular/router";
@@ -99,12 +99,6 @@ export class UserState {
 
      @Action(DeleteUser)
      DeleteUser({getState, setState}: StateContext<UserClassModel>, {id}: DeleteUser) {
-       
-        // const state = getState();
-        // console.log(state);
-        // const filteredUsers = state.users.filter(user => user.id !== id);
-        // console.log(filteredUsers);
- 
         return this._utilityService.deleteUser(id).pipe(tap((result: any)=> {
             const state = getState();
             const filteredUsers = state.users.filter(user => user.id !== id);
@@ -114,5 +108,27 @@ export class UserState {
             })
         }));
      }
+
+     @Action(UpdateUser)
+     updateUser({getState, patchState}: StateContext<UserClassModel>, {payload}: UpdateUser) {
+        // console.log(payload);
+        // const state = getState();
+        // const userList = state.users;
+        // const index = userList.findIndex(user => user.id === payload.id);
+        // console.log(userList);
+        // console.log(index);
+        // console.log(userList[index]);
+        return this._utilityService.updateUser(payload).pipe(tap((result: any)=> {
+            const state = getState();
+            const userList = state.users;
+            const index = userList.findIndex(user => user.id === payload.id);
+            userList[index] = result;
+            patchState({
+                users: userList
+            })
+        }));
+     }
+
+     
 
 }

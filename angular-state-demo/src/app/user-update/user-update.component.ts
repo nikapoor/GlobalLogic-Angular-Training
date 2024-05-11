@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityService } from '../shared/utility.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../shared/user.model';
+import { Store } from '@ngxs/store';
+import { UpdateUser } from '../store/actions/user.action';
 
 @Component({
   selector: 'app-user-update',
@@ -17,7 +19,8 @@ export class UserUpdateComponent {
   constructor(private fb: FormBuilder,
     private _route: ActivatedRoute, 
     private _utilityService: UtilityService,
-  private _router: Router) { }
+    private _router: Router,
+    private store: Store) { }
 
   ngOnInit() {
     let id: any = this._route.snapshot.paramMap.get("id");
@@ -36,11 +39,7 @@ export class UserUpdateComponent {
   }
 
   onUserSubmit() {
-    this._utilityService.updateUser(this.userForm.value).subscribe(result => {
-      console.log('User Updated Succesfully.');
-      console.log(result);
-      this._router.navigate(['/second']);
-    })
+    this.store.dispatch(new UpdateUser(this.userForm.value));
   }
 
 }

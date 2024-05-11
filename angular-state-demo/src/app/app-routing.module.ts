@@ -5,6 +5,7 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserAddComponent } from './user-add/user-add.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'first', component: FirstComponent },
   { path: 'second', component: SecondComponent },
   { path: 'user-detail/:id', component: UserDetailComponent },
-  { path: 'user-add', component: UserAddComponent }
+  { path: 'user-add', component: UserAddComponent },
+  { path: 'user-update/:id', component: UserUpdateComponent }
 
 ];
 

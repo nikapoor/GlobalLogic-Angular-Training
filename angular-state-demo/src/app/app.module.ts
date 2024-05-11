@@ -13,7 +13,8 @@ import { SecondComponent } from './second/second.component';
 import { UserState } from './store/state/user.state';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserAddComponent } from './user-add/user-add.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserUpdateComponent } from './user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +23,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     SecondComponent,
     UserDetailComponent,
-    UserAddComponent
+    UserAddComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([UserState]),
     NgxsLoggerPluginModule.forRoot(),

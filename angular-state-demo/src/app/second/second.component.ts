@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UtilityService } from '../shared/utility.service';
 import { UserState } from '../store/state/user.state';
-import { GetUser } from '../store/actions/user.action';
+import { DeleteUser, GetUser } from '../store/actions/user.action';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { User } from '../shared/user.model';
@@ -22,7 +22,7 @@ export class SecondComponent implements OnInit, OnDestroy {
   // @Select(UserState.usersLoaded)
   usersLoadedSub!: Subscription;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private _utilityService: UtilityService) { }
 
   ngOnInit() : void {
     this.getUsers();
@@ -36,6 +36,17 @@ export class SecondComponent implements OnInit, OnDestroy {
           // this.users$.subscribe();
         }
       });
+    }
+
+    onDeleteUser(id: string) {
+      if(confirm('Do you want to delete the user?')) {
+        this.store.dispatch(new DeleteUser(id));
+        // this._utilityService.deleteUser(id).subscribe(result => {
+        //   console.log('User Deleted Successfully.')
+        //   console.log(result);
+        //   this.getUsers();
+        // })
+      }
     }
 
     ngOnDestroy(): void {

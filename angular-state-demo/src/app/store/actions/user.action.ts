@@ -9,16 +9,15 @@ export class SetSelectedUser {
     constructor(public id: string) { }
 }
 
+export class AddUser {
+    static readonly type = '[User] Add';
+    constructor(public payload:User) { }
+} 
 
-// export class AddUser {
-//     static readonly type = '[User] Add';
-//     constructor(public payload:User) { }
-// } 
-
-// export class DeleteUser {
-//     static readonly type = '[User] Delete';
-//     constructor(public id: string) { }
-// } 
+export class DeleteUser {
+    static readonly type = '[User] Delete';
+    constructor(public id: string) { }
+} 
 
 // export class UpdateUser {
 //     static readonly type = '[User] Update';

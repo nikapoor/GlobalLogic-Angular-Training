@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilityService } from '../shared/utility.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { AddUser } from '../store/actions/user.action';
 
 @Component({
   selector: 'app-user-add',
@@ -13,7 +16,8 @@ export class UserAddComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _utilityService: UtilityService) { }
+    private _utilityService: UtilityService,
+    private store: Store) { }
 
     ngOnInit(): void {
       this.userForm = this.fb.group({
@@ -24,11 +28,7 @@ export class UserAddComponent {
     }
 
     onUserSubmit() { 
-      console.log(this.userForm.value);
-      this._utilityService.addUser(this.userForm.value).subscribe(result => {
-        console.log('User Added Successfully.');
-        console.log(result);
-      })
+      this.store.dispatch(new AddUser(this.userForm.value));
     }
 
 }

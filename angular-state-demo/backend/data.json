@@ -1,34 +1,9 @@
 {
   "users": [
     {
-      "name": "Yash Gupta Junior",
-      "email": "yash.gupta.yg@gmail.cOm",
-      "id": "101"
-    },
-    {
-      "id": "102",
-      "name": "Gautam Bhalla",
-      "email": "gautam.bhalla@gmail.com"
-    },
-    {
-      "id": "103",
-      "name": "Sakshi Dhameja",
-      "email": "sakshi.dhameja@gmail.com"
-    },
-    {
-      "id": "275f",
-      "name": "Yash Gupta",
-      "email": "yash.gupta@gmail.com"
-    },
-    {
-      "id": "",
-      "name": "Bhawna Gunwani",
-      "email": "bhawna.gunwani@gmail.com"
-    },
-    {
-      "id": "1101",
-      "name": "Something",
-      "email": "Something"
+      "id": "5104",
+      "name": "Bhawna Trainer",
+      "email": "bhawna@gmail.in"
     }
   ]
 }

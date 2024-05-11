@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { User } from "src/app/shared/user.model";
-import { GetUser, SetSelectedUser } from "../actions/user.action";
+import { AddUser, DeleteUser, GetUser, SetSelectedUser } from "../actions/user.action";
 import { UtilityService } from "src/app/shared/utility.service";
 import { tap } from "rxjs";
+import { Router } from "@angular/router";
 
 // State Model
 export class UserClassModel {
@@ -28,7 +29,7 @@ export class UserState {
 
     // Selectors has logic to get the state data.
 
-    constructor(private _utilityService: UtilityService) { }
+    constructor(private _utilityService: UtilityService, private _router: Router) { }
 
     @Selector()
     static getUserList(state: UserClassModel) {
@@ -81,6 +82,37 @@ export class UserState {
                 })
             }));
         }
+     }
+
+     @Action(AddUser)
+     addUser({getState, patchState}: StateContext<UserClassModel>, {payload}: AddUser) {
+        // console.log(payload);
+        return this._utilityService.addUser(payload).pipe(tap((result: any)=> {
+            const state = getState();
+            console.log(state);
+            patchState({
+                users: [...state.users, result]
+            });
+            this._router.navigate(['/second']);
+        }));
+     }
+
+     @Action(DeleteUser)
+     DeleteUser({getState, setState}: StateContext<UserClassModel>, {id}: DeleteUser) {
+       
+        // const state = getState();
+        // console.log(state);
+        // const filteredUsers = state.users.filter(user => user.id !== id);
+        // console.log(filteredUsers);
+ 
+        return this._utilityService.deleteUser(id).pipe(tap((result: any)=> {
+            const state = getState();
+            const filteredUsers = state.users.filter(user => user.id !== id);
+            setState({
+                ...state,
+                users: filteredUsers
+            })
+        }));
      }
 
 }

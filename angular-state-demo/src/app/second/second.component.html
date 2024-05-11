@@ -18,8 +18,9 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>
-                <!-- <a routerLink="/user-detail">View Details</a> -->
-                <a [routerLink]='["/user-detail", user.id]'>View Details</a>
+                <a [routerLink]='["/user-detail", user.id]'>View Details</a> |
+                <button (click)="onDeleteUser(user.id)">Delete</button> |
+                <a [routerLink]='["/user-update", user.id]'>Update</a>
             </td>
         </tr>
     </tbody>

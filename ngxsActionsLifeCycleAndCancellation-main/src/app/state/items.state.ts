@@ -17,9 +17,10 @@ export interface ItemsStateModel {
 })
 @Injectable()
 export class ItemsState {
+  
   constructor(private itemsService: ItemsService) {}
 
-  @Action(AddItem)
+  @Action(AddItem, { cancelUncompleted: true })
   addItem(ctx: StateContext<ItemsStateModel>, action: AddItem) {
     // below is error for testing
     // throw new Error('');
@@ -38,7 +39,7 @@ export class ItemsState {
   @Action(RemoveItem)
   removeItem(ctx: StateContext<ItemsStateModel>, action: RemoveItem) {
     // below is error for testing
-    // throw new Error('');
+    // throw new Error('Throwing an error..');
 
     return this.itemsService.removeItem(action.payload).pipe(
       tap((itemId: number) => {

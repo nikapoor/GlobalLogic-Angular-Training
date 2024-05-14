@@ -1,0 +1,41 @@
+
+	Http Method: GET
+	http://localhost:3000/employees
+	
+	Http Method: GET
+	http://localhost:3000/employees/101
+	
+	Http Method: DELETE
+	http://localhost:3000/employees/103
+	
+	Http Method: POST
+	Request Header: Content-Type: application/json
+	Request Body: { "name": "Yash Gupta", "email": "yash.gupta@gmail.com" }
+	http://localhost:3000/employees
+	
+	Http Method: PUT
+	Request Header: Content-Type: application/json
+	Request Body: { "name": "Yash Gupta Junior", "email": "yash.gupta.yg@gmail.com" }
+	http://localhost:3000/employees/101
+	
+	
+*****************************************************************************
+
+	HTTP Method: GET
+	http://localhost:5000/employees
+	
+	HTTP Method: POST
+	Request Header: Content-Type: application/json
+	Request Body: { "name": "Gautam Bhalla", "position": "Developer", "office": "Mumbai", "salary": 32000 }
+	http://localhost:5000/employees
+	
+	HTTP Method: GET
+	http://localhost:5000/employees/664058f27fb08a4f087956bf
+	
+	HTTP Method: PUT
+	Request Header: Content-Type: application/json
+	Request Body: { "name": "Gautam Bhalla", "position": "Developer", "office": "Mumbai", "salary": 32000 }
+	http://localhost:5000/employees/664058f27fb08a4f087956bf
+	
+	HTTP Method: DELETE
+	http://localhost:5000/employees/664058f27fb08a4f087956bf

@@ -1,3 +1,4 @@
+import { Selector } from "@ngxs/store";
 
 
 export class IncrementValue {
@@ -14,5 +15,5 @@ export class ResetValue {
 
 export class SetValue {
     static readonly type = '[Simple Value] Set value defined by user';
-    constructor(payload: number) { }
+    constructor(public payload: number) { }
 }

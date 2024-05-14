@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Action, State, StateContext, StateToken } from "@ngxs/store";
+import { Action, Selector, State, StateContext, StateToken } from "@ngxs/store";
 import { SimpleValueModel } from "src/app/shared/simple-value.model";
 import { DecrementValue, IncrementValue, ResetValue, SetValue } from "../actions/simple-value.action";
 
@@ -18,22 +18,50 @@ export class SimpleValueState {
 
     @Action(IncrementValue)
     incrementValue(ctx: StateContext<SimpleValueModel>) {
-        console.log('incrementValue Action Dispatched.')
+        // console.log('incrementValue Action Dispatched.')
+        const state = ctx.getState();
+        let stateValue = state.value;
+        stateValue++;
+        ctx.setState({
+            ...state,
+            value: stateValue
+        })
     }
 
     @Action(DecrementValue)
     decrementValue(ctx: StateContext<SimpleValueModel>) {
-        console.log('decrementValue Action Dispatched.')
+        // console.log('decrementValue Action Dispatched.')
+        const state = ctx.getState();
+        let stateValue = state.value;
+        stateValue--;
+        ctx.setState({
+            ...state,
+            value: stateValue
+        })
     }
 
     @Action(ResetValue)
     resetValue(ctx: StateContext<SimpleValueModel>) {
-        console.log('resetValue Action Dispatched.')
+        // console.log('resetValue Action Dispatched.');
+        const state = ctx.getState();
+        ctx.setState({
+            ...state,
+            value: 0
+        })
     }
 
     @Action(SetValue)
-    setValue(ctx: StateContext<SimpleValueModel>) {
-        console.log('setValue Action Dispatched.')
+    setValue(ctx: StateContext<SimpleValueModel>, action: SetValue) {
+        const state = ctx.getState();
+        ctx.setState({
+            ...state,
+            value: action.payload
+        })
+    }
+
+    @Selector()
+    static value(state: SimpleValueModel) {
+        return state.value;
     }
     
 }

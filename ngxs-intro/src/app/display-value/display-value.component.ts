@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { SimpleValueState } from '../store/states/simple-value.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-display-value',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./display-value.component.css']
 })
 export class DisplayValueComponent {
-  value = 0;
+
+  @Select(SimpleValueState.value)
+  value$!: Observable<number>;
 }

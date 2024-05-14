@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { DecrementValue, IncrementValue, ResetValue, SetValue } from '../store/actions/simple-value.action';
+import { SimpleValueState } from '../store/states/simple-value.state';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-change-value',
@@ -9,23 +11,33 @@ import { DecrementValue, IncrementValue, ResetValue, SetValue } from '../store/a
 })
 export class ChangeValueComponent {
 
-  constructor(private store: Store) {}
+  value!: number;
 
-  value = 0;
+  @Select(SimpleValueState.value)
+  value$!: Observable<number>;
+
+  private valueSubscription!: Subscription;
+
+  constructor(private store: Store) {
+    this.valueSubscription = this.value$.subscribe((value) => {
+      this.value = value;
+    })
+  }
+
+  ngOnDestroy() {
+    this.valueSubscription.unsubscribe();
+  }
 
   increment(): void {
     this.store.dispatch(new IncrementValue());
-    this.value++;
   }
 
   decrement(): void {
     this.store.dispatch(new DecrementValue());
-    this.value--;
   }
 
   resetValue(): void {
     this.store.dispatch(new ResetValue());
-    this.value = 0;
   }
 
   setValue(value: number | null) {
@@ -35,4 +47,5 @@ export class ChangeValueComponent {
     this.store.dispatch(new ResetValue()
     );
   }
+
 }

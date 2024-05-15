@@ -1,0 +1,5 @@
+
+<form [formGroup]="newUserForm" ngxsForm="users.newUserForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="userName" />
+    <button type="submit">Submit</button>
+</form>

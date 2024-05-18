@@ -1,0 +1,10 @@
+<a routerLink="/">Home</a>
+<a *ngIf="!(authenticated$ | async)" routerLink="/auth/login">Login</a>
+<a *ngIf="authenticated$ | async" routerLink="/dashboard">Dashboard</a>
+
+<hr />
+
+<button *ngIf="!(authenticated$ | async)" color="primary" (click)="logIn()">LogIn</button>
+<button *ngIf="authenticated$ | async" color="warn" (click)="logOut()">LogOut</button>
+
+<router-outlet></router-outlet>

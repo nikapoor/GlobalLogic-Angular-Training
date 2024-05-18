@@ -17,17 +17,24 @@ import { MyCustomStorageEngine } from './shared/MyCustomStorageEngine';
 import { UserComponent } from './user/user.component';
 import { UserState } from './store/user.state';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserOneState } from './store/user-one.state';
+import { UserOneComponent } from './user-one/user-one.component';
+import { CounterModule } from './counter';
+import { CalcComponent } from './calc/calc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    UserOneComponent,
+    CalcComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,    
     ReactiveFormsModule,
-    NgxsModule.forRoot([UserState]),
+    CounterModule,
+    // NgxsModule.forRoot([UserOneState]),
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsFormPluginModule.forRoot(),
@@ -56,6 +63,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     })
   ],
   providers: [MyCustomStorageEngine],
-  bootstrap: [UserComponent]
+  bootstrap: [CalcComponent]
 })
 export class AppModule { }

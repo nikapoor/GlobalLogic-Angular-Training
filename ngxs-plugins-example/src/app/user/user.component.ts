@@ -17,7 +17,7 @@ export class UserComponent {
   });
 
   onSubmit() {
-   this.store.dispatch(new UpdateFormDirty({dirty: false, path: 'users.newUserForm'}))
+  this.store.dispatch(new UpdateFormDirty({dirty: false, path: 'users.newUserForm'}))
   }
 
 }

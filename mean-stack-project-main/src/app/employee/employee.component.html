@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <h2>Employee Management</h2>
         </div>
-            
+
         <div class="col ml-auto text-right">
             <button type="button" class="btn btn-outline-success"
             (click)="onAddEmployee()">
@@ -15,7 +15,7 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-4" *ngFor="let item of employees">
+        <div class="col-md-4" *ngFor="let item of employees$ | async">
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{item.name}}</h5>
@@ -46,27 +46,27 @@
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        
-        <form [formGroup]="empForm" (ngSubmit)="onEmpSubmit()"> 
+
+        <form [formGroup]="empForm" (ngSubmit)="onEmpSubmit()">
             <div class="modal-body">
                 <div class="form-group">
                     <label>Enter Name</label>
                     <input type="text" class="form-control" formControlName="name">
                     <small *ngIf="!empForm.get('name')!.valid && empForm.get('name')!.touched" class="form-text text-danger">Please Enter Name.</small>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Enter position</label>
                     <input type="text" class="form-control" formControlName="position">
                     <small *ngIf="!empForm.get('position')!.valid && empForm.get('position')!.touched" class="form-text text-danger">Please Enter position.</small>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Enter Office</label>
                     <input type="text" class="form-control" formControlName="office">
                     <small *ngIf="!empForm.get('office')!.valid && empForm.get('office')!.touched" class="form-text text-danger">Please Enter office.</small>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Enter Salary</label>
                     <input type="text" class="form-control" formControlName="salary">

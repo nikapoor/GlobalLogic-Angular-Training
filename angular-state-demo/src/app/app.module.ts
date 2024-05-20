@@ -15,6 +15,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     SecondComponent,
     UserDetailComponent,
     UserAddComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,

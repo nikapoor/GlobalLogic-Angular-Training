@@ -1,0 +1,21 @@
+
+  <div class="container">
+    <div class="login-form">
+      <h3>Login</h3>
+      <form [formGroup]="login" ngxsForm="login.newLoginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="mb-3">
+          <label class="form-label"><strong>Email address</strong></label>
+          <input type="email" class="form-control" formControlName="email">
+          <p class="text-danger" *ngIf="getErrors('email')?.['required']"> This is required field.</p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"><strong>Password</strong></label>
+          <input type="password" class="form-control" formControlName="password">
+          <p class="text-danger" *ngIf="getErrors('password')?.['required']"> This is required field.</p>
+        </div>
+        <div class="text-start">
+            <button type="submit" class="btn btn-primary" [disabled]="login.invalid">Submit</button></div>
+      </form>
+    </div>
+  </div>
+  

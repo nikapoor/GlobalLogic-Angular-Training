@@ -1,0 +1,65 @@
+<!-- <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/"><b>NGXS Project</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex flex-wrap align-items-center justify-content-between collapse navbar-collapse"
+            id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" *ngIf="authenticated$ | async"
+                        routerLink="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" *ngIf="authenticated$ | async"
+                        routerLink="/employee">Employee</a>
+                </li>
+            </ul>
+            <div class="text-end">
+                <button *ngIf="!(authenticated$ | async)" type="button" class="btn btn-outline-light me-2">
+                    <a class="nav-link" routerLink="/auth/login">Login</a>
+                </button>
+                <button type="button" class="btn btn-warning" *ngIf="authenticated$ | async"
+                    (click)="logOut()">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg bg-lightblue border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/"><b>NGXS Project</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex flex-wrap align-items-center justify-content-between collapse navbar-collapse"
+            id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" *ngIf="authenticated$ | async"
+                        routerLink="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" *ngIf="authenticated$ | async"
+                        routerLink="/employee">Employee</a>
+                </li>
+            </ul>
+            <div class="text-end">
+                <button *ngIf="!(authenticated$ | async)" type="button" class="btn btn-outline-light me-2">
+                    <a class="nav-link" routerLink="/auth/login">Login</a>
+                </button>
+                <button type="button" class="btn btn-danger" *ngIf="authenticated$ | async"
+                    (click)="logOut()">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav>
+

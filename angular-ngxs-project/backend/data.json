@@ -1,0 +1,34 @@
+{
+  "employee": [
+    {
+      "id": "1101",
+      "name": "Shadab Ahmad",
+      "email": "sadab011@gmail.com",
+      "designation": "Sr. Software Engineer"
+    },
+    {
+      "id": "1103",
+      "name": "Jeff",
+      "email": "Jeff@gmail.in",
+      "designation": "Sr. Graphic"
+    },
+    {
+      "id": "1104",
+      "name": "Sandra",
+      "email": "Sandra@gmail.com",
+      "designation": "Consultant"
+    },
+    {
+      "id": "1106",
+      "name": "pvelsrd",
+      "email": "pavel@gmail.com",
+      "designation": "Sr. Software Engineer"
+    },
+    {
+      "id": "NaN",
+      "name": "shadab123",
+      "email": "sadab01111@gmail.com",
+      "designation": "sr eng"
+    }
+  ]
+}

@@ -1,5 +1,10 @@
-import { Component}  from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector
-})           
+  selector: 'ngxs-auth',
+  template: `
+    <h3>Auth Module</h3>
+    <router-outlet> </router-outlet>
+  `
+})
+export class AuthComponent {}

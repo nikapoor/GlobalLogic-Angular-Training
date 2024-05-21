@@ -15,9 +15,7 @@ export class DashboardGuard implements CanActivate {
     private router: Router
   ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate() {
       return this.store.selectOnce(appState => appState.auth.user && appState.auth.user.is_confirmed).pipe(
         tap(
           (allowed) => {

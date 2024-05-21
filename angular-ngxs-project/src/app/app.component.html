@@ -1,5 +1,5 @@
 <a routerLink="/">Home</a>
-<a *ngIf="!(authenticated$ | async)" routerLink="/auth/login">Login</a>
+<a *ngIf="!(authenticated$ | async)" routerLink="/auth/login">Login</a> |
 <a *ngIf="authenticated$ | async" routerLink="/dashboard">Dashboard</a>
 
 <hr />

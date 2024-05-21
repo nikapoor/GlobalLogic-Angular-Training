@@ -1,0 +1,151 @@
+
+
+
+export function Addition(num1: number, num2: number) {
+    return num1 + num2;
+  } 
+
+export const products: any = [
+    "Ecommerce",
+    "Admin Portal",
+    "Dashboard",
+    "ERP"
+]
+  
+export function testError() {
+    throw new Error('Your signup is showing some errors.');
+}
+
+---------------------------------------
+
+import { AppComponent } from "./app.component"
+
+// Unit Test Suite
+describe('App Component', () => {
+
+  // Unit Test Method
+  it('should create the app', () => {
+    const app = new AppComponent();
+    expect(app).toBeTruthy();
+  })
+
+  // Unit Test Method
+  it('should have as title `angular-jest-demo`', () => {
+    const app = new AppComponent();
+    expect(app.title).toEqual('angular-jest-demo');
+  })
+
+})
+
+describe('App Component Again', () => {
+
+  // Unit Test Method
+  it('should create the app', () => {
+    const app = new AppComponent();
+    expect(app).toBeTruthy();
+  })
+
+  // Unit Test Method
+  it('should have as title `angular-jest-demo`', () => {
+    const app = new AppComponent();
+    expect(app.title).toEqual('angular-jest-demo');
+  })
+
+})
+
+-----------------------------------------------------------
+
+
+import { Addition, products, testError } from "./scripts";
+
+// Unit Test Suite
+describe('Testing Sum', () => {
+
+  it('Adding Two Numbers', () => {
+    expect(Addition(10,20)).toBe(30);
+  })
+
+  it('Adding Two Negative Numbers', () => {
+    expect(Addition(-10,-20)).toBe(-30);
+  })
+
+  test('Testing Object', () => {
+    var data:any = { age: 23 };
+    data["name"] = "John Smith";
+    expect(data).toEqual({"age": 23, "name": "John Smith"});
+  })
+
+  test('Checking item in array', () => {
+    expect(products).toContain('ERP');
+    expect(new Set(products)).toContain('ERP');
+  })
+
+  test('test throwing error', () => {
+    expect(() => testError()).toThrow();
+    expect(() => testError()).toThrow(Error);
+    expect(() => testError()).toThrow("Your signup is showing some errors.");
+    expect(() => testError()).toThrow(/^Your signup is showing some errors.$/);
+  })
+
+})
+
+-------------------------------------------------------------
+
+
+// Setup: Initial Repeated Piece of code..
+beforeEach(() => {
+  console.log('beforeEach() rendered..')
+})
+
+test('Test One', () => {
+  console.log('Test 1 Executed.');
+  expect(10+20).toBe(30);
+})
+
+test('Test Two', () => {
+  console.log('Test 2 Executed.');
+  expect(20+20).toBe(40);
+})
+
+// Teardown: Clearing activities
+afterEach(() => {
+  console.log('afterEach() rendered..')
+})
+
+--------------------------------------------------------------
+
+
+// Setup: Initial Repeated Piece of code..
+beforeAll(() => {
+  console.log('beforeAll() rendered..')
+})
+
+test('Test One', () => {
+  console.log('Test 1 Executed.');
+  expect(10+20).toBe(30);
+})
+
+test('Test Two', () => {
+  console.log('Test 2 Executed.');
+  expect(20+20).toBe(40);
+})
+
+// Teardown: Clearing activities
+afterAll(() => {
+  console.log('afterAll() rendered..')
+})
+
+------------------------------------
+
+
+test.only('Test One', () => {
+  console.log('Test 1 Executed.');
+  expect(10+20).toBe(30);
+})
+
+test('Test Two', () => {
+  console.log('Test 2 Executed.');
+  expect(20+20).toBe(40);
+})
+
+

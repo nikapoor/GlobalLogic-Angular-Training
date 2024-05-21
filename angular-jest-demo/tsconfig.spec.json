@@ -1,0 +1,16 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jest" // 1. replace `Jasmine` with `Jest`
+    ],
+    "esModuleInterop": true, // 2. Include this property
+    "emitDecoratorMetadata": true // 3. Include this property
+  },
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

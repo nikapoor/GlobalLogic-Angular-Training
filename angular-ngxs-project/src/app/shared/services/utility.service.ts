@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMP } from '../model/emp.model';
+import { LoginModel } from '../model/login.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +32,8 @@ export class UtilityService {
   updateEMP(emp: EMP) {
     return this.httpClient.put<EMP>(`${this.baseUrl}employee/${(emp.id)}`, emp)
   }
+  login(credentials: LoginModel): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}login`, credentials);
+  }
+
 }

@@ -3,35 +3,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UpdateFormStatus } from '@ngxs/form-plugin';
 import { Store } from '@ngxs/store';
 import { LogIn } from 'src/app/state/auth/auth.actions';
+
 @Component({
   selector: 'ngxs-login',
   templateUrl: './login.component.html',
-  styleUrls: [ './login.component.css' ] 
-  
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  login!: FormGroup;
+  loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private store: Store) {
-    this.login = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    })
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
 
   getErrors(field: string) {
-    return (this.login.get(field)?.touched && this.login.get(field)?.errors) ? this.login.get(field)?.errors : null;
+    return (this.loginForm.get(field)?.touched && this.loginForm.get(field)?.errors) ? this.loginForm.get(field)?.errors : null;
   }
 
   onSubmit() {
-    console.log(this.login.value);
-    this.store.dispatch(
-      new UpdateFormStatus({
-        status: this.login.status,
-        path: 'login.newLoginForm'
-      })
-    )
-    if (this.login.invalid) return alert('Please enter all fields')
-    this.store.dispatch(new LogIn(this.login.value));
+    if (this.loginForm.invalid) {
+      this.markFormGroupTouched(this.loginForm);
+      return;
+    }
+    this.store.dispatch(new LogIn(this.loginForm.value));
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 }

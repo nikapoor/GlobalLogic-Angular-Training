@@ -8,7 +8,7 @@ import { AuthState } from '../state/auth/auth.state';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class LoginGuard implements CanActivate {
   constructor(
     private store: Store,

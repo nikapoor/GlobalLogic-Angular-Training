@@ -5,7 +5,6 @@
     "outDir": "./out-tsc/spec",
     "types": [
       "jest" // 1. replace `Jasmine` with `Jest`
-      , "node"
     ],
     "esModuleInterop": true, // 2. Include this property
     "emitDecoratorMetadata": true // 3. Include this property

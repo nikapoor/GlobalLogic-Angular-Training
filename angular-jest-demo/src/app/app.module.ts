@@ -3,20 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AsychronousComponent } from './asychronous/asychronous.component';
+import { AsynchronousComponent } from './asynchronous/asynchronous.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataComponent } from './data/data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AsychronousComponent
+    AsynchronousComponent,
+    DataComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterTestingModule
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent, AsychronousComponent]
+  bootstrap: [AsynchronousComponent]
 })
 export class AppModule { }

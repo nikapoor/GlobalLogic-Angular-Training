@@ -1,36 +1,41 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AppComponent } from "./app.component";
 
-describe('AppComponent', () => {
-  let component: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+describe('App Component', () => {
 
-  beforeEach(() => {
-   TestBed.configureTestingModule({
-      declarations: [AppComponent] 
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [AppComponent],
+            imports: [RouterTestingModule]
+        }).compileComponents();
+    })
+
+    beforeEach(() => {
+        // fixture creation
+        fixture = TestBed.createComponent(AppComponent);
+        // component creation (component = new AppComponent())
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    })
+
+    it('should create the app', () => {
+      expect(component).toBeTruthy();
     });
-  });
+ 
+    it('should have as title `angular-jest-demo`', () => {
+        expect(component.title).toEqual('angular-jest-demo');
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-    
-  it('should create the app', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it(`should have as title 'angular-jest-demo'`, () => {
-    expect(component.title).toEqual('angular-jest-demo');
-  });
+    it('should render title', () => {
+        const compiledHtml = fixture.nativeElement as HTMLElement;
+        expect(compiledHtml.querySelector('.content span')?.textContent)
+        .toContain('angular-jest-demo app is running!');
+    })
   
-
-
-  it('should renderd tittle', () =>{
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-jest-demo app is running!');
-  });
-})
+  })
+  

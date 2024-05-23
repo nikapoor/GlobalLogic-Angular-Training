@@ -1,0 +1,84 @@
+
+Jest Setup in an Angular Project:
+
+	1. Create New Angular Project
+	
+		ng new angular-jest-demo
+	
+	2. Uninstall all karma jasmine packages from project
+		
+		npm uninstall karma karma-chrome-launcher karma-coverage karma-jasmine karma-jasmine-html-reporter @types/jasmine jasmine-core
+		
+	3. Remove test object from angular.json file
+	
+		"test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+		
+	4. Install jest packages:
+
+		npm install --save-dev jest @types/jest jest-preset-angular
+		
+	5. Create setup-jest.ts file in root folder
+	
+		import 'jest-preset-angular/setup-jest';
+		
+	6. Create jest.config.ts file (Refer File) and install the below depedendency
+	
+		npm install ts-node
+	
+	7. Update tsconfig.spec.json
+	
+		/* To learn more about this file see: https://angular.io/config/tsconfig. */
+		{
+		  "extends": "./tsconfig.json",
+		  "compilerOptions": {
+			"outDir": "./out-tsc/spec",
+			"types": [
+			  "jest" // 1
+			],
+			"esModuleInterop": true, // 2
+			"emitDecoratorMetadata": true // 3
+		  },
+		  "include": [
+			"src/**/*.spec.ts",
+			"src/**/*.d.ts"
+		  ]
+		}
+
+	8. Add jest configuration on package.json inside the script tag
+	
+		"test": "jest --verbose",
+		"test:coverage": "jest --coverage",
+		"test: watch": "jest --watch"
+		
+	9. Write a Unit Test Cases...
+	
+	10.Run the test cases:
+	
+		npm run test:coverage
+	
+		
+		
+	
+		
+		
+		
+		
+		
+		

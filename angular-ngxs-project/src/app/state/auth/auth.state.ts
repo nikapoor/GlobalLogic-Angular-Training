@@ -8,8 +8,8 @@ import { AuthStateModel } from './auth.model';
 import { LogIn, LogOut } from './auth.actions';
 
 import { User } from './auth.model';
-import { AuthService } from '../core/services/auth.service';
 import { Injectable } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @State<AuthStateModel>({
   name: 'auth',
@@ -58,6 +58,7 @@ export class AuthState {
           authenticated: true,
           user: result
         });
+        this.router.navigateByUrl('/dashboard')
       })
     );
   }

@@ -13,7 +13,6 @@ export class FakeService {
     return this.http.get
     ("https://jsonplaceholder.typicode.com/todos/1");
   }
-
   getDatav2(): Observable<any> {
     const url = "https://jsonplaceholder.typicode.com/todos/1";
     return this.http.get(url).pipe(

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngxs-final-example": {
+    "angular-ngxs-project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngxs-final-example",
+            "outputPath": "dist/angular-ngxs-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngxs-final-example:build:production"
+              "browserTarget": "angular-ngxs-project:build:production"
             },
             "development": {
-              "browserTarget": "ngxs-final-example:build:development"
+              "browserTarget": "angular-ngxs-project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngxs-final-example:build"
+            "browserTarget": "angular-ngxs-project:build"
           }
         },
         "test": {
@@ -100,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c7eed5c6-05e2-49cd-be33-cf30e1cd15f9"
   }
 }

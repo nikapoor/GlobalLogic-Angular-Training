@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store, Select, Actions, ofActionDispatched } from '@ngxs/store';
-import { LogIn, LogOut } from './state/auth.actions';
-import { AuthState } from './state/auth.state';
+import { LogIn, LogOut } from './state/auth/auth.actions';
+import { AuthState } from './state/auth/auth.state';
 
 @Component({
   selector: 'my-app',
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
       // console.warn('-- LOGGED OUT');
     });
   }
+
 
   logIn() {
     this.store.dispatch(new LogIn({ email: 'mail@mail.com', password: '123456' }));

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of as observableOf } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { User } from 'src/app/state/auth/auth.model';
 
 // MODELS
-import { User } from '../../state/auth.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,10 +1,17 @@
-<a routerLink="/">Home</a>
-<a *ngIf="!(authenticated$ | async)" routerLink="/auth/login">Login</a> |
+<!-- <a routerLink="/">Home</a><br><br><br><br><br>
+<a *ngIf="!(authenticated$ | async)" routerLink="/auth/login">Login</a>
+<br><br>
 <a *ngIf="authenticated$ | async" routerLink="/dashboard">Dashboard</a>
-
+<br><br>
+<a *ngIf="authenticated$ | async" routerLink="/employee">employees</a>
 <hr />
 
 <button *ngIf="!(authenticated$ | async)" color="primary" (click)="logIn()">LogIn</button>
 <button *ngIf="authenticated$ | async" color="warn" (click)="logOut()">LogOut</button>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+<app-header></app-header>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

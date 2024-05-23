@@ -1,57 +1,36 @@
-// import { TestBed } from '@angular/core/testing';
-// import { RouterTestingModule } from '@angular/router/testing';
-// import { AppComponent } from './app.component';
-// import { products, testError } from './script';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
-// describe('AppComponent', () => {
-//   beforeEach(() => TestBed.configureTestingModule({
-//     imports: [RouterTestingModule],
-//     declarations: [AppComponent]
-//   }));
+
+describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(() => {
+   TestBed.configureTestingModule({
+      declarations: [AppComponent] 
+    });
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+    
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it(`should have as title 'angular-jest-demo'`, () => {
+    expect(component.title).toEqual('angular-jest-demo');
+  });
   
 
-//   it('should create the app', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.componentInstance;
-//     expect(app).toBeTruthy();
-//   });
 
-//   it(`should have as title 'angular-jest-demo'`, () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.componentInstance;
-//     expect(app.title).toEqual('angular-jest-demo');
-//   });
-
-//   it('should render title', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     fixture.detectChanges();
-//     const compiled = fixture.nativeElement as HTMLElement;
-//     expect(compiled.querySelector('.content span')?.textContent).toContain('angular-jest-demo app is running!');
-//   });
-//    test('checking item in  tarray', () => {
-//  expect (products).toContain('ERP');
-//  expect(new Set (products)).toContain('ERP');
-//    })
-//    test('checking item in  tarray', () => {
-//      expect(() => testError()).toThrow('');
-//      expect(() => testError()).toThrow('error');
-//      expect(() => testError()).toThrow("your signup shwoing  error");
-//      expect(() => testError()).toThrow(/your signup shwoing  error.$/);  
-//   })
-// });
-
-// steup initial 
-  beforeAll(() =>{
-    console.log('beforeall() renderd..')
-
-
-  })
-  test('Test One', () =>{
-       console.log('Test One renderd..')
-  })
-  test('Test Two', () =>{
-    console.log('Test Two renderd..')
-  })
- afterAll(() =>{
-  console.log('afterall() renderd..')
- })
+  it('should renderd tittle', () =>{
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-jest-demo app is running!');
+  });
+})

@@ -8,7 +8,8 @@ describe('FakeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     HttpClientSpy = {
-      get: jest.fn()
+      get: jest.fn(),
+      post: jest.fn()
     }
     service = new FakeService(HttpClientSpy)
   });
